@@ -17,5 +17,6 @@ public class GymDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(
             Assembly.GetExecutingAssembly());
+        modelBuilder.Entity<Plan>().HasQueryFilter(p => p.IsActive);
     }
 }
