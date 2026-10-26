@@ -6,6 +6,9 @@ namespace MVCGymProject.Data;
 
 public class GymDbContext : DbContext
 {
+    public GymDbContext() : base()
+    {
+    }
     public GymDbContext(DbContextOptions<GymDbContext> options) : base(options)
     {
     }

@@ -17,7 +17,7 @@ namespace MVCGymProject.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.13")
+                .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -60,7 +60,7 @@ namespace MVCGymProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plans", t =>
+                    b.ToTable("Plans", null, t =>
                         {
                             t.HasCheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
                         });
