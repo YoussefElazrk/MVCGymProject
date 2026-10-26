@@ -15,8 +15,8 @@ public class PlanRepository : IPlanRepository
 
     public async Task<IEnumerable<Plan>> GetAllPlansAsync(bool trackChanges = false, CancellationToken ct = default)
     {
-        var plans = trackChanges ? _dbContext.Plans.AsTracking().ToListAsync(ct) : _dbContext.Plans.AsNoTracking().ToListAsync(ct);
-        return await plans;
+        var plans = trackChanges ? await _dbContext.Plans.IgnoreQueryFilters().AsTracking().ToListAsync(ct) : await _dbContext.Plans.IgnoreQueryFilters().AsNoTracking().ToListAsync(ct);
+        return plans;
     }
     public async Task<Plan> GetPlanByIdAsync(int id, bool trackChanges = false, CancellationToken ct = default)
     {
