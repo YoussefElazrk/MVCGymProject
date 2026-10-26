@@ -8,9 +8,9 @@ namespace MVCGymProject.DAL.Repositories.Classes;
 public class PlanRepository : IPlanRepository
 {
     private readonly GymDbContext _dbContext;
-    public PlanRepository()
+    public PlanRepository(GymDbContext dbContext)
     {
-        _dbContext = new GymDbContext();
+        _dbContext = dbContext;
     }
 
     public async Task<IEnumerable<Plan>> GetAllPlansAsync(bool trackChanges = false, CancellationToken ct = default)

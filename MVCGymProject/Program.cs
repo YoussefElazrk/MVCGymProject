@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using MVCGymProject.DAL.Repositories.Classes;
 using MVCGymProject.DAL.Repositories.Interfaces;
+using MVCGymProject.Data;
 
 namespace MVCGymProject;
 
@@ -14,7 +16,8 @@ public class Program
         builder.Services.AddScoped<IPlanRepository, PlanRepository>();
         //builder.Services.AddTransient<IPlanRepository, PlanRepository>();
         //builder.Services.AddSingleton<IPlanRepository, PlanRepository>();
-
+        builder.Services.AddDbContext<GymDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         var app = builder.Build();
 

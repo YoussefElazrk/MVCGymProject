@@ -6,9 +6,8 @@ namespace MVCGymProject.Data;
 
 public class GymDbContext : DbContext
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public GymDbContext(DbContextOptions<GymDbContext> options) : base(options)
     {
-        optionsBuilder.UseSqlServer("Server=localhost;Database=GymDb;Trusted_Connection=True;trustservercertificate=true");
     }
 
     public DbSet<Plan> Plans { get; set; }
