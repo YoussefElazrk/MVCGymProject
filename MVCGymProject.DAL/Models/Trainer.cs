@@ -1,10 +1,10 @@
 ﻿using MVCGymProject.DAL.Models.Enums;
 
-namespace MVCGymProject.DAL.Models
-{
-    public class Trainer : GymUser
-    {
-        public Specialites Speciality { get; set; }
+namespace MVCGymProject.DAL.Models;
 
-    }
+public sealed class Trainer : GymUser
+{
+    public Specialty Speciality { get; set; }
+
 }
+

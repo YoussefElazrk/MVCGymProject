@@ -1,7 +1,6 @@
-﻿namespace MVCGymProject.DAL.Models
+﻿namespace MVCGymProject.DAL.Models;
+
+public sealed class Member : GymUser
 {
-    public class Member : GymUser
-    {
-        public string? PhotoUrl { get; set; }
-    }
+    public string? PhotoUrl { get; set; }
 }
