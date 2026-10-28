@@ -8,8 +8,9 @@ public class CategoryConfiguration : BaseEntityConfiguration<Category>
     public override void Configure(EntityTypeBuilder<Category> builder)
     {
         base.Configure(builder);
+
         builder.Property(c => c.CategoryName)
                .IsRequired()
-               .HasMaxLength(100);
+               .HasMaxLength(20);
     }
 }
