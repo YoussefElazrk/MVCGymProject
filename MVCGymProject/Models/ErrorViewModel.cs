@@ -1,4 +1,4 @@
-namespace MVCGymProject.Models;
+namespace MVCGymProject.PL.Models;
 
 public class ErrorViewModel
 {

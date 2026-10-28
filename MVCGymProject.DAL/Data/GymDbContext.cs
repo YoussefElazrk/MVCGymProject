@@ -2,7 +2,7 @@
 using MVCGymProject.DAL.Models;
 using System.Reflection;
 
-namespace MVCGymProject.Data;
+namespace MVCGymProject.DAL.Data;
 
 public class GymDbContext : DbContext
 {

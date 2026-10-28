@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MVCGymProject.DAL.Data;
 using MVCGymProject.DAL.Models;
 using MVCGymProject.DAL.Repositories.Interfaces;
-using MVCGymProject.Data;
 
 namespace MVCGymProject.DAL.Repositories.Classes;
 
