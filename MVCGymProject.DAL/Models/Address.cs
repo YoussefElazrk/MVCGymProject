@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿namespace MVCGymProject.DAL.Models;
 
-namespace MVCGymProject.DAL.Models;
-
-[Owned]
 public class Address
 {
     public int BuildingNumber { get; set; }

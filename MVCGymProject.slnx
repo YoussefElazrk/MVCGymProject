@@ -1,5 +1,5 @@
 <Solution>
   <Project Path="MVCGymProject.BLL/MVCGymProject.BLL.csproj" Id="947a2a5c-a103-41dd-9854-56850e450e55" />
   <Project Path="MVCGymProject.DAL/MVCGymProject.DAL.csproj" Id="6c07884f-0793-4b81-9130-df4ab68bbf42" />
-  <Project Path="MVCGymProject/MVCGymProject.PL.csproj" />
+  <Project Path="MVCGymProject.PL/MVCGymProject.PL.csproj" />
 </Solution>

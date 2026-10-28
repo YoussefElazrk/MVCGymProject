@@ -9,12 +9,16 @@ public class SessionConfiguration : BaseEntityConfiguration<Session>
     override public void Configure(EntityTypeBuilder<Session> builder)
     {
         base.Configure(builder);
+
         builder.Property(s => s.Description)
                .IsRequired()
                .HasMaxLength(200);
-        builder.ToTable(Tb =>
+
+        builder.ToTable(t =>
         {
-            Tb.HasCheckConstraint("CK_Session_Dates", "EndDate > StartDate");
+            t.HasCheckConstraint("CK_Session_Capacity", "Capacity BETWEEN 1 AND 25");
+            t.HasCheckConstraint("CK_Session_Dates", "EndDate > StartDate");
+
         });
     }
 }

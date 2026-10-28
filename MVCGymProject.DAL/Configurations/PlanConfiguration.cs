@@ -9,21 +9,23 @@ public class PlanConfiguration : BaseEntityConfiguration<Plan>
     public override void Configure(EntityTypeBuilder<Plan> builder)
     {
         base.Configure(builder);
+
         builder.Property(p => p.Name)
-                      .HasColumnType("varchar")
-                      .HasMaxLength(50)
-                      .IsRequired();
+               .IsRequired()
+               .HasMaxLength(50);
 
         builder.Property(p => p.Description)
-               .HasMaxLength(200)
-               .IsRequired();
+               .IsRequired()
+               .HasMaxLength(200);
 
         builder.Property(p => p.Price)
-            .HasPrecision(10, 2);
+               .HasPrecision(10, 2);
+
+        builder.HasQueryFilter(p => p.IsActive);
 
         builder.ToTable(t =>
         {
-            t.HasCheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
+            t.HasCheckConstraint("CK_Plan_DurationDays", "DurationDays BETWEEN 1 AND 365");
         });
     }
 }

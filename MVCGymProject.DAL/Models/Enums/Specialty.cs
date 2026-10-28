@@ -3,7 +3,7 @@
 public enum Specialty
 {
     GeneralFitness = 1,
-    Nutrition,
     Yoga,
-    StrengthTraining,
+    Boxing,
+    CrossFit
 }

@@ -9,18 +9,16 @@ public abstract class GymUserConfiguration<T> : BaseEntityConfiguration<T> where
     public override void Configure(EntityTypeBuilder<T> builder)
     {
         base.Configure(builder);
+
         builder.Property(u => u.Name)
-            .HasColumnType("nvarchar")
             .IsRequired()
             .HasMaxLength(50);
 
         builder.Property(u => u.Email)
-            .HasColumnType("nvarchar")
             .IsRequired()
             .HasMaxLength(100);
 
         builder.Property(u => u.PhoneNumber)
-            .HasColumnType("nvarchar")
             .IsRequired()
             .HasMaxLength(11);
 
@@ -30,12 +28,14 @@ public abstract class GymUserConfiguration<T> : BaseEntityConfiguration<T> where
         builder.HasIndex(u => u.PhoneNumber)
             .IsUnique();
 
+        var entityName = typeof(T).Name;
         builder.ToTable(t =>
         {
-            t.HasCheckConstraint("CK_Email", "Email LIKE '_%@_%._%'");
-
-            t.HasCheckConstraint("CK_PhoneNumber", "PhoneNumber LIKE '01[0125]%' AND LEN(PhoneNumber) = 11");
+            t.HasCheckConstraint($"CK_{entityName}_Email", "Email LIKE '_%@_%._%'");
+            t.HasCheckConstraint($"CK_{entityName}_PhoneNumber",
+                "PhoneNumber LIKE '01[0125]%' AND LEN(PhoneNumber) = 11 AND PhoneNumber NOT LIKE '%[^0-9]%'");
         });
+
         builder.OwnsOne(u => u.Address, address =>
         {
             address.Property(a => a.Street)
@@ -49,8 +49,7 @@ public abstract class GymUserConfiguration<T> : BaseEntityConfiguration<T> where
                 .IsRequired();
 
             address.Property(a => a.BuildingNumber)
-                .HasColumnName("BuildingNumber")
-                .IsRequired();
+                .HasColumnName("BuildingNumber");
         });
     }
 }

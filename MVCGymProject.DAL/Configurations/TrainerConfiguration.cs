@@ -8,8 +8,8 @@ internal class TrainerConfiguration : GymUserConfiguration<Trainer>
     public override void Configure(EntityTypeBuilder<Trainer> builder)
     {
         base.Configure(builder);
-        builder.Property(t => t.Speciality)
-               .IsRequired()
+
+        builder.Property(t => t.Specialty)
                .HasConversion<string>()
                .HasMaxLength(50);
 

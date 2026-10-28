@@ -8,15 +8,23 @@ public class HealthRecordConfiguration : BaseEntityConfiguration<HealthRecord>
 {
     override public void Configure(EntityTypeBuilder<HealthRecord> builder)
     {
-        base.Configure(builder);
+        builder.Property(hr => hr.Height)
+              .HasPrecision(5, 2);
+
+        builder.Property(hr => hr.Weight)
+               .HasPrecision(5, 2);
+
         builder.Property(hr => hr.BloodType)
                .IsRequired()
                .HasMaxLength(3);
+
         builder.Property(hr => hr.Note)
                .HasMaxLength(500);
-        builder.ToTable(Tb =>
+
+        builder.ToTable(t =>
         {
-            Tb.HasCheckConstraint("CK_BloodType", "BloodType IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')");
+            t.HasCheckConstraint("CK_HealthRecord_BloodType",
+                "BloodType IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')");
         });
     }
 }

@@ -14,37 +14,21 @@
   <!-- ^ Bootstrap 5.3.8 css file -->
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <!-- ^ Our main css file -->
-  <link rel="stylesheet" href="~/css/style.css" />
-  <title>Power fitness | Home</title>
+   <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+  <title>@ViewData["Title"] | Power Fitness</title>
 </head>
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    string ActiveClass(string controller) => string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase) ? "active" : "";
+}
 <body>
-    @* <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCGymProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header> *@
+
 <header>
     <!-- ^ navbar -->
     <nav class="navbar navbar-expand-lg bg-white my-3">
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="~/images/logo.jpg" alt="" />
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+          <img src="~/images/logo.jpg" asp-append-version="true" alt="Power Fitness logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,26 +38,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav m-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
             <li class="nav-item">
-            <li class="nav-item">
-              <a class="nav-link active px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Home</a>
+              <a class="nav-link @ActiveClass("Home") px-3 py-2 mx-2 fw-bolder fs-5" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Members</a>
+              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5"  href="#">Members</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Trainers</a>
+              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5"  href="#">Trainers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Sessions</a>
+              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5"  href="#">Sessions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Plans</a>
+              <a class="nav-link @ActiveClass("Plan") px-3 py-2 mx-2 fw-bolder fs-5" asp-controller="Plan" asp-action="Index">Plans</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Memberships</a>
+              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5"  href="#">Memberships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5" aria-current="page" href="#">Sessions Schedule</a>
+              <a class="nav-link  px-3 py-2 mx-2 fw-bolder fs-5"  href="#">Sessions Schedule</a>
             </li>
             <li class="nav-item">
               <form asp-action="Logout" asp-controller="Account" method="post" class="d-inline">
