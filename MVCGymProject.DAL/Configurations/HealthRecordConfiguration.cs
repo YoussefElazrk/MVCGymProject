@@ -8,6 +8,8 @@ public class HealthRecordConfiguration : BaseEntityConfiguration<HealthRecord>
 {
     override public void Configure(EntityTypeBuilder<HealthRecord> builder)
     {
+        base.Configure(builder);
+
         builder.Property(hr => hr.Height)
               .HasPrecision(5, 2);
 
