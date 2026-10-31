@@ -10,4 +10,5 @@ public class Session : BaseEntity
     public Category Category { get; set; } = default!;
     public int TrainerId { get; set; }
     public Trainer Trainer { get; set; } = default!;
+    public ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
 }
