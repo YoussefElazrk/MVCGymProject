@@ -6,7 +6,7 @@ namespace MVCGymProject.DAL.Configurations;
 
 public class SessionConfiguration : BaseEntityConfiguration<Session>
 {
-    override public void Configure(EntityTypeBuilder<Session> builder)
+    public override void Configure(EntityTypeBuilder<Session> builder)
     {
         base.Configure(builder);
 
