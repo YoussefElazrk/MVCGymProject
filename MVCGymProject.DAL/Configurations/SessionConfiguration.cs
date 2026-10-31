@@ -6,7 +6,7 @@ namespace MVCGymProject.DAL.Configurations;
 
 public class SessionConfiguration : BaseEntityConfiguration<Session>
 {
-    override public void Configure(EntityTypeBuilder<Session> builder)
+    public override void Configure(EntityTypeBuilder<Session> builder)
     {
         base.Configure(builder);
 
@@ -20,5 +20,16 @@ public class SessionConfiguration : BaseEntityConfiguration<Session>
             t.HasCheckConstraint("CK_Session_Dates", "EndDate > StartDate");
 
         });
+        builder.HasOne(s => s.Category)
+       .WithMany(c => c.Sessions)
+       .HasForeignKey(s => s.CategoryId)
+       .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(s => s.Trainer)
+       .WithMany(t => t.Sessions)
+       .HasForeignKey(s => s.TrainerId)
+       .OnDelete(DeleteBehavior.Restrict);
+
+
     }
 }

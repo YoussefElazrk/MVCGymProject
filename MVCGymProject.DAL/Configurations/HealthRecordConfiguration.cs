@@ -8,6 +8,8 @@ public class HealthRecordConfiguration : BaseEntityConfiguration<HealthRecord>
 {
     override public void Configure(EntityTypeBuilder<HealthRecord> builder)
     {
+        base.Configure(builder);
+
         builder.Property(hr => hr.Height)
               .HasPrecision(5, 2);
 
@@ -26,5 +28,11 @@ public class HealthRecordConfiguration : BaseEntityConfiguration<HealthRecord>
             t.HasCheckConstraint("CK_HealthRecord_BloodType",
                 "BloodType IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')");
         });
+
+        builder.HasOne(hr => hr.Member)
+            .WithOne(m => m.HealthRecord)
+            .HasForeignKey<HealthRecord>(hr => hr.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
     }
 }

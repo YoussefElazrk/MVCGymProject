@@ -3,7 +3,7 @@ using MVCGymProject.DAL.Models;
 
 namespace MVCGymProject.DAL.Configurations;
 
-internal class MemberConfiguration : GymUserConfiguration<Member>
+public class MemberConfiguration : GymUserConfiguration<Member>
 {
     public override void Configure(EntityTypeBuilder<Member> builder)
     {

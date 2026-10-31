@@ -3,7 +3,7 @@ using MVCGymProject.DAL.Models;
 
 namespace MVCGymProject.DAL.Configurations;
 
-internal class TrainerConfiguration : GymUserConfiguration<Trainer>
+public class TrainerConfiguration : GymUserConfiguration<Trainer>
 {
     public override void Configure(EntityTypeBuilder<Trainer> builder)
     {

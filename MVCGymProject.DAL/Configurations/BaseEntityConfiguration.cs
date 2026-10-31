@@ -8,11 +8,9 @@ public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> w
 {
     public virtual void Configure(EntityTypeBuilder<T> builder)
     {
-        builder.HasKey(e => e.Id);
 
         builder.Property(e => e.CreatedAt)
-            .HasColumnType("datetime")
-            .IsRequired();
+            .HasDefaultValueSql("GETUTCDATE()");
 
     }
 }
