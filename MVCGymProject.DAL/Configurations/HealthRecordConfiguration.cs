@@ -28,5 +28,11 @@ public class HealthRecordConfiguration : BaseEntityConfiguration<HealthRecord>
             t.HasCheckConstraint("CK_HealthRecord_BloodType",
                 "BloodType IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')");
         });
+
+        builder.HasOne(hr => hr.Member)
+            .WithOne(m => m.HealthRecord)
+            .HasForeignKey<HealthRecord>(hr => hr.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
     }
 }
