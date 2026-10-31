@@ -16,6 +16,9 @@ public class GymDbContext : DbContext
     public DbSet<Plan> Plans => Set<Plan>();
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Session> Sessions => Set<Session>();
+    public DbSet<HealthRecord> HealthRecords => Set<HealthRecord>();
+    public DbSet<Membership> Memberships => Set<Membership>();
+    public DbSet<Booking> Bookings => Set<Booking>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
