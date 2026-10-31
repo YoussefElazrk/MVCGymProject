@@ -24,5 +24,12 @@ public class SessionConfiguration : BaseEntityConfiguration<Session>
        .WithMany(c => c.Sessions)
        .HasForeignKey(s => s.CategoryId)
        .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(s => s.Trainer)
+       .WithMany(t => t.Sessions)
+       .HasForeignKey(s => s.TrainerId)
+       .OnDelete(DeleteBehavior.Restrict);
+
+
     }
 }
