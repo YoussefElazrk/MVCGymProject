@@ -20,5 +20,9 @@ public class SessionConfiguration : BaseEntityConfiguration<Session>
             t.HasCheckConstraint("CK_Session_Dates", "EndDate > StartDate");
 
         });
+        builder.HasOne(s => s.Category)
+       .WithMany(c => c.Sessions)
+       .HasForeignKey(s => s.CategoryId)
+       .OnDelete(DeleteBehavior.Restrict);
     }
 }
