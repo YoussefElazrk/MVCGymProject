@@ -124,6 +124,7 @@ namespace MVCGymProject.DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
+                        .HasColumnName("JoinDate")
                         .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<DateOnly>("DateOfBirth")
@@ -310,6 +311,7 @@ namespace MVCGymProject.DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
+                        .HasColumnName("HireDate")
                         .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<DateOnly>("DateOfBirth")
