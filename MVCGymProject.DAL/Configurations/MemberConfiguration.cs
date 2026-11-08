@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MVCGymProject.DAL.Models;
 
 namespace MVCGymProject.DAL.Configurations;
@@ -11,5 +12,8 @@ public class MemberConfiguration : GymUserConfiguration<Member>
 
         builder.Property(m => m.PhotoUrl)
                .HasMaxLength(200);
+
+        builder.Property(m => m.CreatedAt)
+       .HasColumnName("JoinDate");
     }
 }
