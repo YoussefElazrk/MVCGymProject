@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MVCGymProject.DAL.Models;
 
 namespace MVCGymProject.DAL.Configurations;
@@ -13,5 +14,7 @@ public class TrainerConfiguration : GymUserConfiguration<Trainer>
                .HasConversion<string>()
                .HasMaxLength(50);
 
+        builder.Property(t => t.CreatedAt)
+       .HasColumnName("HireDate");
     }
 }
