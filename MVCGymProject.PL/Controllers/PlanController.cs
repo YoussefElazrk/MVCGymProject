@@ -6,22 +6,22 @@ namespace MVCGymProject.PL.Controllers;
 
 public class PlanController : Controller
 {
-    private readonly IGenericRepository<Plan> _planRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public PlanController(IGenericRepository<Plan> planRepository)
+    public PlanController(IUnitOfWork unitOfWork)
     {
-        _planRepository = planRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<IActionResult> Index(CancellationToken ct)
     {
-        var plans = await _planRepository.GetAllAsync(ct: ct);
+        var plans = await _unitOfWork.Repository<Plan>().GetAllAsync(ct: ct);
         return View(plans);
     }
 
     public async Task<IActionResult> Details(int id, CancellationToken ct)
     {
-        var plan = await _planRepository.GetByIdAsync(id, ct: ct);
+        var plan = await _unitOfWork.Repository<Plan>().GetByIdAsync(id, ct: ct);
         if (plan is null)
         {
             return NotFound();
