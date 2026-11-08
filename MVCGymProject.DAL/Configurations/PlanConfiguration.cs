@@ -21,7 +21,6 @@ public class PlanConfiguration : BaseEntityConfiguration<Plan>
         builder.Property(p => p.Price)
                .HasPrecision(10, 2);
 
-        builder.HasQueryFilter(p => p.IsActive);
 
         builder.ToTable(t =>
         {
